@@ -1,0 +1,6 @@
+This is a simple 1-nearest-neighbor classifier using Meng Yao's excellent C++ FastDTW library
+for comparisons between timeseries.
+
+Usage: ./clf jobfile1 jobfile2
+
+explanation of file format to follow at a later date.

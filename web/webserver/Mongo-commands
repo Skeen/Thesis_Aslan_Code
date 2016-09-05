@@ -1,0 +1,4 @@
+use event-leaks
+db.timeseries.find()
+db.timeseries.find({tag:'skypetalk'}).sort({'date':-1}).limit(1) 
+

@@ -1,0 +1,4 @@
+until python logger2.py; do
+    echo "Siglogger crashed with exit code $?.  Respawning.." >&2
+    sleep 1
+done
