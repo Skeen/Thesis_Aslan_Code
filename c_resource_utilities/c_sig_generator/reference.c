@@ -9,6 +9,7 @@
 #include <inttypes.h>
 #include <math.h>
 #include <time.h>
+#include <unistd.h>
 
 pthread_mutex_t mutex, printf_mutex;
 unsigned int extant_threads;
@@ -104,7 +105,7 @@ unsigned int timefib(int n) {
 void* worker_thread_fn(void* because_pthread_said_so) {
   pthread_detach(pthread_self());
 
-  char* buf = malloc(16 * samples * sizeof(char));
+  char* buf = (char*) malloc(16 * samples * sizeof(char));
   int length = 0;
 
   int i;
@@ -147,7 +148,7 @@ int main(int argc, char** argv) {
 
   int i;
 
-  pthread_t* tids = malloc(sizeof(pthread_t) * threads);
+  pthread_t* tids = (pthread_t*) malloc(sizeof(pthread_t) * threads);
 
   for (i = 0; i < threads; i++) {
 
