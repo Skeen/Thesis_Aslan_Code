@@ -15,6 +15,7 @@
 #include <inttypes.h>
 #include <math.h>
 #include <time.h>
+#include <unistd.h>
 
 pthread_mutex_t mutex;
 unsigned int numthreads;
@@ -147,7 +148,7 @@ int main(int argc, char** argv) {
 
   int i, j, repcount;
 
-  pthread_t* tids = malloc(sizeof(pthread_t) * max_threads);
+  pthread_t* tids = (pthread_t*) malloc(sizeof(pthread_t) * max_threads);
 
   for (i = 0; i < max_threads; i++) {
     for(repcount = reps; repcount > 0; repcount-- ) {
