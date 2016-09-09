@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from selenium import webdriver
 from subprocess import call
 from pylab import *
