@@ -3,7 +3,7 @@ var bodyParser = require ('body-parser');
 var fs         = require ('fs');
 var https      = require ('https');
 var util       = require ('util');
-var memwatch   = require('memwatch')
+//var memwatch   = require('memwatch')
 var morgan     = require('morgan')
 var logger     = require('./logger')
 
@@ -17,7 +17,7 @@ var passport =   require('./auth');
 var port       = 3000;
 var HOME=process.env.HOME;
 
-
+/*
 var SSLPATH = '/etc/letsencrypt/live/jsspy.askarov.net/';
 
 var httpOptions = {
@@ -25,9 +25,9 @@ var httpOptions = {
   cert: fs.readFileSync (SSLPATH + 'cert.pem'),
   ca  : fs.readFileSync (SSLPATH + 'chain.pem')
 };
-
-
-
+*/
+var httpOptions = {
+};
 
 
 var httpLog = morgan ('combined', { "stream": {write: function(str) { logger.debug(str.trim()) }}});
@@ -70,7 +70,7 @@ app.get ('/api/ping', function (req, res) {
 
 
 var server = https.createServer (httpOptions, app);
-
+/*
 var hd;
 memwatch.on('leak', function(info) {
   logger.error ('Memory leak detected: >>> ', info);
@@ -82,6 +82,7 @@ memwatch.on('leak', function(info) {
     hd = null;
   }
 });
+*/
 
 server.listen(port, function() {
   logger.info('Server listening on', port);
