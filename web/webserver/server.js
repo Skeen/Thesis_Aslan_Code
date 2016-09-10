@@ -1,7 +1,7 @@
 var express    = require ('express');
 var bodyParser = require ('body-parser');
 var fs         = require ('fs');
-var https      = require ('https');
+var http      = require ('http');
 var util       = require ('util');
 //var memwatch   = require('memwatch')
 var morgan     = require('morgan')
@@ -32,7 +32,7 @@ var httpOptions = {
 
 var httpLog = morgan ('combined', { "stream": {write: function(str) { logger.debug(str.trim()) }}});
 
-var app = express ();
+var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -64,12 +64,13 @@ app.use(require('./controllers/api/timeseries'));
 
 app.get ('/api/ping', function (req, res) {
   logger.debug ("ping");
+  logger.info("ping");
   res.status(201).json("pong");
 });
 
 
 
-var server = https.createServer (httpOptions, app);
+var server = http.createServer(app);
 /*
 var hd;
 memwatch.on('leak', function(info) {
