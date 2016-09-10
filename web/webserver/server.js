@@ -15,7 +15,11 @@ var passport =   require('./auth');
 
 
 var port       = 3000;
-var HOME=process.env.HOME;
+//var HOME=process.env.HOME;
+console.log(process.argv[1]);
+
+var path = require('path');
+var HOME=path.dirname(path.dirname(process.argv[1]));
 
 /*
 var SSLPATH = '/etc/letsencrypt/live/jsspy.askarov.net/';
@@ -47,7 +51,6 @@ var basicAuth = passport.authenticate('basic', { session: false} )
 
 app.use('/common',  express.static(HOME + '/webcommon'      ));
 app.use('/client',  express.static(HOME + '/webclient_spy'  ));
-
 
 // queries are restricted
 
