@@ -64,7 +64,6 @@ app.use(require('./controllers/api/timeseries'));
 
 app.get ('/api/ping', function (req, res) {
   logger.debug ("ping");
-  logger.info("ping");
   res.status(201).json("pong");
 });
 
